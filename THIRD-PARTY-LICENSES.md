@@ -154,13 +154,11 @@ SOFTWARE.
 | パッケージ | 主な用途 | ライセンス |
 |---|---|---|
 | `vite` / `@vitejs/plugin-react` / `vite-plugin-pwa` | バンドラー・PWA生成 | MIT |
-| `tailwindcss` / `@tailwindcss/vite` / `autoprefixer` | CSS ビルド | MIT |
-| `esbuild` / `tsx` | トランスパイル・テスト実行 | MIT |
-| `typescript` | 型チェック | Apache-2.0 |
-| `lightningcss`（Tailwind CSS 間接依存） | CSS 変換エンジン | MPL-2.0 |
-| `caniuse-lite`（Autoprefixer 間接依存） | ブラウザ互換性データ | CC-BY-4.0 |
-
-※ `package.json` テンプレート由来で記載されている未使用パッケージ（`@google/genai` [Apache-2.0], `express` [MIT], `dotenv` [BSD-2-Clause], `motion` [MIT]）は `src/` からインポートされておらず、配信バンドルには含まれません。
+| `tailwindcss` / `@tailwindcss/vite` | CSS ビルド | MIT |
+| `tsx`（間接依存 `esbuild` を含む） | トランスパイル・テスト実行 | MIT |
+| `typescript` / `@types/node` / `@types/react` / `@types/react-dom` | 型チェック・型定義 | Apache-2.0 / MIT |
+| `lightningcss`（Vite / Tailwind CSS 間接依存） | CSS 変換エンジン | MPL-2.0 |
+| `caniuse-lite`（`browserslist` 等間接依存） | ブラウザ互換性データ | CC-BY-4.0 |
 
 ---
 
