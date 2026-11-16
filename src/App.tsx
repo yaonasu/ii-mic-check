@@ -37,6 +37,23 @@ import {
 
 const MAX_RECORDING_SECONDS = 60; // 1分未満制限 (最大60秒)
 const MAX_CLIPS = 4; // 記録できる音声を4個に制限 (4個を超えたら古い順にFIFOで上書き)
+const RAW_BASE_URL =
+  typeof import.meta !== 'undefined' && import.meta.env?.BASE_URL
+    ? import.meta.env.BASE_URL
+    : '/';
+const BASE_PATH = RAW_BASE_URL.endsWith('/') ? RAW_BASE_URL : `${RAW_BASE_URL}/`;
+const APP_LICENSE_URL = `${BASE_PATH}LICENSE.md`;
+const THIRD_PARTY_LICENSES_URL = `${BASE_PATH}THIRD-PARTY-LICENSES.md`;
+
+const MIT_LICENSE_TEXT = `Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`;
+
+const ISC_LICENSE_TEXT = `Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.`;
 
 export default function App() {
   // Display-only mode flag (?debug=1 -> debug detail mode, otherwise general-user simple mode)
@@ -57,6 +74,11 @@ export default function App() {
   const [recordingSeconds, setRecordingSeconds] = useState<number>(0);
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
   const [showLicenses, setShowLicenses] = useState<boolean>(false);
+  const [licenseModalTab, setLicenseModalTab] = useState<'app' | 'thirdParty'>('app');
+  const openLicenseModal = (tab: 'app' | 'thirdParty') => {
+    setLicenseModalTab(tab);
+    setShowLicenses(true);
+  };
   const recordingPhaseRef = useRef<RecordingPhase>('idle');
 
   const updateRecordingPhase = (phase: RecordingPhase) => {
@@ -771,12 +793,21 @@ export default function App() {
       {/* Footer */}
       <footer className="mt-auto border-t border-slate-800/80 bg-slate-950 px-4 py-4 text-center text-xs text-slate-500">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>ii-mic-check（マイク音質チェッカー）</span>
+          <span>
+            Copyright (c) 2026 八百茄子 (yaonasu) / ii-mic-check（マイク音質チェッカー）
+          </span>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <span>完全ローカルブラウザ処理（音声・解析結果の外部送信なし）</span>
+            <span>完全ローカル処理（外部送信なし）</span>
             <button
               type="button"
-              onClick={() => setShowLicenses(true)}
+              onClick={() => openLicenseModal('app')}
+              className="text-slate-400 hover:text-cyan-300 underline underline-offset-2 transition cursor-pointer"
+            >
+              利用条件・ライセンス
+            </button>
+            <button
+              type="button"
+              onClick={() => openLicenseModal('thirdParty')}
               className="text-slate-400 hover:text-cyan-300 underline underline-offset-2 transition cursor-pointer"
             >
               サードパーティライセンス
@@ -785,7 +816,7 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Third-Party Licenses Modal */}
+      {/* License & Third-Party Licenses Modal */}
       {showLicenses && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-xs p-4"
@@ -796,10 +827,10 @@ export default function App() {
             if (e.target === e.currentTarget) setShowLicenses(false);
           }}
         >
-          <div className="w-full max-w-lg rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl p-5 space-y-4 text-slate-200">
+          <div className="w-full max-w-2xl rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl p-5 space-y-4 text-slate-200">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <h3 id="third-party-licenses-title" className="text-sm font-bold text-white">
-                サードパーティライセンス表記（ii-mic-check）
+                ライセンス・著作権表記（ii-mic-check）
               </h3>
               <button
                 type="button"
@@ -810,26 +841,170 @@ export default function App() {
                 <X className="w-4 h-4" />
               </button>
             </div>
-            <div className="max-h-72 overflow-y-auto space-y-3 text-[11px] leading-relaxed pr-1">
-              <p className="text-slate-400">
-                本アプリのブラウザ配信バンドルには以下のオープンソースソフトウェアが含まれています。詳細はリポジトリ内の THIRD-PARTY-LICENSES.md をご参照ください。
-              </p>
-              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-                <div className="font-bold text-white">react / react-dom (MIT License)</div>
-                <div className="text-slate-400">Copyright (c) Meta Platforms, Inc. and affiliates.</div>
-              </div>
-              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-                <div className="font-bold text-white">lucide-react (ISC License)</div>
-                <div className="text-slate-400">
-                  Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2023 as part of Feather (MIT). All other copyright (c) for Lucide are held by Lucide Contributors 2025.
+
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => setLicenseModalTab('app')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition cursor-pointer ${
+                  licenseModalTab === 'app'
+                    ? 'bg-cyan-500/20 text-cyan-200 border-cyan-500/50'
+                    : 'bg-slate-950 text-slate-400 border-slate-800 hover:text-slate-200'
+                }`}
+              >
+                利用条件・著作権（本アプリ）
+              </button>
+              <button
+                type="button"
+                onClick={() => setLicenseModalTab('thirdParty')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition cursor-pointer ${
+                  licenseModalTab === 'thirdParty'
+                    ? 'bg-cyan-500/20 text-cyan-200 border-cyan-500/50'
+                    : 'bg-slate-950 text-slate-400 border-slate-800 hover:text-slate-200'
+                }`}
+              >
+                サードパーティライセンス（全文）
+              </button>
+            </div>
+
+            {licenseModalTab === 'app' ? (
+              <div className="max-h-80 overflow-y-auto space-y-3 text-xs leading-relaxed pr-1">
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+                  <div className="font-bold text-white">ii-mic-check（マイク音質チェッカー）</div>
+                  <div className="text-slate-300">
+                    Copyright (c) 2026 八百茄子 (yaonasu). All rights reserved.
+                  </div>
+                </div>
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2 text-[11px] text-slate-300">
+                  <p>
+                    <strong className="text-white">1. アプリの利用（無料）：</strong>
+                    公開されている本アプリ（Web / PWA）の通常利用は、個人利用・業務利用を問わず無料で許可されます。
+                  </p>
+                  <p>
+                    <strong className="text-white">2. 独自ソースコード等の禁止事項：</strong>
+                    権利を保有する独自ソースコード、UI デザイン、採点ロジック等の無断改変・複製・再配布・別サービスへの流用は原則として禁止します。
+                  </p>
+                  <p>
+                    <strong className="text-white">3. 適用除外：</strong>
+                    第三者オープンソースライブラリ（MIT / ISC 等）およびテンプレート由来・既存表記部分（
+                    <code className="text-cyan-300">SPDX-License-Identifier: Apache-2.0</code>
+                    ）の権利は制限しません。
+                  </p>
+                  <p>
+                    <strong className="text-white">4. 無保証：</strong>
+                    本アプリおよび測定結果は現状のまま（AS IS）で提供され、品質や適合性に関する保証はありません。
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-3 text-[11px] text-slate-400">
+                  <span>配信ファイル（オフラインPWA対応）:</span>
+                  <a
+                    href={APP_LICENSE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-300 hover:text-cyan-200 underline underline-offset-2"
+                  >
+                    LICENSE.md を開く
+                  </a>
                 </div>
               </div>
-              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-                <div className="font-bold text-white">workbox-window (MIT License)</div>
-                <div className="text-slate-400">Copyright 2018 Google LLC</div>
+            ) : (
+              <div className="max-h-80 overflow-y-auto space-y-3 text-[11px] leading-relaxed pr-1">
+                <p className="text-slate-400">
+                  本アプリの配信バンドル（JS / CSS / Service Worker）には以下のオープンソースソフトウェアが含まれます。オフライン PWA 環境でも確認できるよう、著作権表示とライセンス全文をアプリ内および{' '}
+                  <a
+                    href={THIRD_PARTY_LICENSES_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-300 hover:text-cyan-200 underline underline-offset-2"
+                  >
+                    THIRD-PARTY-LICENSES.md
+                  </a>{' '}
+                  に保持しています。
+                </p>
+
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+                  <div className="font-bold text-white">
+                    react / react-dom / scheduler (MIT License)
+                  </div>
+                  <div className="text-slate-400">
+                    Copyright (c) Meta Platforms, Inc. and affiliates.
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+                  <div className="font-bold text-white">lucide-react (ISC License)</div>
+                  <div className="text-slate-400">
+                    Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2023 as part of Feather (MIT). All other copyright (c) for Lucide are held by Lucide Contributors 2025.
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+                  <div className="font-bold text-white">
+                    Workbox ランタイム: workbox-window / workbox-core / workbox-precaching / workbox-routing / workbox-strategies (MIT License)
+                  </div>
+                  <div className="text-slate-400">Copyright 2018 Google LLC</div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+                  <div className="font-bold text-white">
+                    tailwindcss — 配信 CSS / Preflight 出力 (MIT License)
+                  </div>
+                  <div className="text-slate-400">Copyright (c) Tailwind Labs, Inc.</div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+                  <div className="font-bold text-white">
+                    vite — ランタイム補助コード (MIT License)
+                  </div>
+                  <div className="text-slate-400">
+                    Copyright (c) 2019-present, VoidZero Inc. and Vite contributors
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
+                  <div className="font-bold text-white">MIT License 全文</div>
+                  <pre className="whitespace-pre-wrap font-sans text-[10px] text-slate-400 leading-relaxed">
+                    {MIT_LICENSE_TEXT}
+                  </pre>
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
+                  <div className="font-bold text-white">ISC License 全文</div>
+                  <pre className="whitespace-pre-wrap font-sans text-[10px] text-slate-400 leading-relaxed">
+                    {ISC_LICENSE_TEXT}
+                  </pre>
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+                  <div className="font-bold text-white">
+                    テンプレート由来・既存 Apache-2.0 適用部分の注記
+                  </div>
+                  <div className="text-slate-400">
+                    `src/App.tsx` および `src/utils/wavExport.ts` の `SPDX-License-Identifier: Apache-2.0` 表示部分には Apache License, Version 2.0 が引き続き適用されます。
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="flex justify-end">
+            )}
+
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+              <div className="flex items-center gap-3 text-[11px]">
+                <a
+                  href={APP_LICENSE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-cyan-300 underline underline-offset-2"
+                >
+                  LICENSE.md
+                </a>
+                <a
+                  href={THIRD_PARTY_LICENSES_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-cyan-300 underline underline-offset-2"
+                >
+                  THIRD-PARTY-LICENSES.md
+                </a>
+              </div>
               <button
                 type="button"
                 onClick={() => setShowLicenses(false)}

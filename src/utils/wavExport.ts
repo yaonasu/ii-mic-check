@@ -4,7 +4,7 @@
  */
 
 /**
- * Headset Clarity Lab - WAV Audio Export Utilities
+ * ii-mic-check - WAV Audio Export Utilities
  * 
  * 仕様:
  * - 追加の音声加工（音量正規化・ノイズ除去・EQ等）を行わない16bit量子化変換 (Linear PCM)
