@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2026 八百茄子 (yaonasu)
+ * SPDX-License-Identifier: MIT
+ */
+
 export type RecordingPhase =
   | 'idle'
   | 'measuring_pre_noise'

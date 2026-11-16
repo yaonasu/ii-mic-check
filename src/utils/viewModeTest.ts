@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) 2026 八百茄子 (yaonasu)
+ * SPDX-License-Identifier: MIT
+ */
+
+/**
  * Phase 3B verification tests:
  * 1) URL query parameter parsing (default simple, ?debug=1 debug, ?debug=0, ?debug=true, ?foo=bar&debug=1)
  * 2) UI separation between general-user simple mode and ?debug=1 detail mode

@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) 2026 八百茄子 (yaonasu)
+ * SPDX-License-Identifier: MIT
+ */
+
+/**
  * DSP verification script for known signals
  */
 import {

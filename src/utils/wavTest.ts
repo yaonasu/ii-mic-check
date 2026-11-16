@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) 2026 八百茄子 (yaonasu)
+ * SPDX-License-Identifier: MIT
+ */
+
+/**
  * Test script for WAV export and standalone HTML report generation
  */
 import { audioBufferToWavBlob, audioBufferToBase64DataUrl } from './wavExport';

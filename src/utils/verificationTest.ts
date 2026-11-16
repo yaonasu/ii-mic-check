@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) 2026 八百茄子 (yaonasu)
+ * SPDX-License-Identifier: MIT
+ */
+
+/**
  * Unit tests for Phase 2A hardware verification diagnostics,
  * 5-point subjective listening evaluation, and CSV/JSON exports.
  */

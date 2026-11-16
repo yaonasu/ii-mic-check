@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2026 八百茄子 (yaonasu)
+ * SPDX-License-Identifier: MIT
+ */
+
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { RecordedClip, SubjectiveRating, SubjectiveScoreValue } from '../types/audio';
 import {

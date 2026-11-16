@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) 2026 八百茄子 (yaonasu)
+ * SPDX-License-Identifier: MIT
+ */
+
+/**
  * Centralized URL query parameter parser for switching between general-user mode
  * and debug detail mode (?debug=1).
  *

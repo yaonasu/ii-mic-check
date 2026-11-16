@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2026 八百茄子 (yaonasu)
+ * SPDX-License-Identifier: MIT
+ */
+
 import React, { useEffect, useRef } from 'react';
 import { rmsToDb, formatDb } from '../utils/audioDsp';
 import { RecordingPhase } from '../types/audio';

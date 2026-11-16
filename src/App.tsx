@@ -2,6 +2,11 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
+/*
+ * Copyright (c) 2026 八百茄子 (yaonasu)
+ * Application-specific additions for ii-mic-check are licensed under the MIT License (see LICENSE.md).
+ * Template-derived and existing Apache-2.0 portions remain under Apache-2.0.
+ */
 
 import React, { useState, useEffect, useRef } from 'react';
 import {
@@ -870,30 +875,33 @@ export default function App() {
             {licenseModalTab === 'app' ? (
               <div className="max-h-80 overflow-y-auto space-y-3 text-xs leading-relaxed pr-1">
                 <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-                  <div className="font-bold text-white">ii-mic-check（マイク音質チェッカー）</div>
-                  <div className="text-slate-300">
-                    Copyright (c) 2026 八百茄子 (yaonasu). All rights reserved.
+                  <div className="font-bold text-white">
+                    ii-mic-check（マイク音質チェッカー）— MIT License
                   </div>
+                  <div className="text-slate-300">Copyright (c) 2026 八百茄子 (yaonasu)</div>
                 </div>
                 <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2 text-[11px] text-slate-300">
                   <p>
-                    <strong className="text-white">1. アプリの利用（無料）：</strong>
-                    公開されている本アプリ（Web / PWA）の通常利用は、個人利用・業務利用を問わず無料で許可されます。
+                    <strong className="text-white">1. 独自コードのライセンス（MIT License）：</strong>
+                    八百茄子 (yaonasu) が権利を保有する本アプリの独自ソースコード等は MIT License の下で公開されており、著作権表示および許諾表示を保持する条件のもとで、改変・再配布・商用利用（個人利用・業務利用を含む）が許可されます。
                   </p>
                   <p>
-                    <strong className="text-white">2. 独自ソースコード等の禁止事項：</strong>
-                    権利を保有する独自ソースコード、UI デザイン、採点ロジック等の無断改変・複製・再配布・別サービスへの流用は原則として禁止します。
+                    <strong className="text-white">2. 既存 Apache-2.0 および第三者 OSS：</strong>
+                    <code className="text-cyan-300">src/App.tsx</code>・
+                    <code className="text-cyan-300">src/utils/wavExport.ts</code> の{' '}
+                    <code className="text-cyan-300">SPDX-License-Identifier: Apache-2.0</code>{' '}
+                    適用部分、および第三者オープンソースライブラリ（MIT / ISC 等）については、それぞれの原ライセンス条件が維持されます。
                   </p>
                   <p>
-                    <strong className="text-white">3. 適用除外：</strong>
-                    第三者オープンソースライブラリ（MIT / ISC 等）およびテンプレート由来・既存表記部分（
-                    <code className="text-cyan-300">SPDX-License-Identifier: Apache-2.0</code>
-                    ）の権利は制限しません。
+                    <strong className="text-white">3. 無保証（AS IS）：</strong>
+                    本アプリおよび測定結果は現状のまま無保証で提供され、品質・適合性・正確性についていかなる保証も行いません。
                   </p>
-                  <p>
-                    <strong className="text-white">4. 無保証：</strong>
-                    本アプリおよび測定結果は現状のまま（AS IS）で提供され、品質や適合性に関する保証はありません。
-                  </p>
+                </div>
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
+                  <div className="font-bold text-white text-[11px]">MIT License 本文</div>
+                  <pre className="whitespace-pre-wrap font-sans text-[10px] text-slate-400 leading-relaxed">
+                    {`MIT License\n\nCopyright (c) 2026 八百茄子 (yaonasu)\n\n${MIT_LICENSE_TEXT}`}
+                  </pre>
                 </div>
                 <div className="flex flex-wrap items-center gap-3 text-[11px] text-slate-400">
                   <span>配信ファイル（オフラインPWA対応）:</span>

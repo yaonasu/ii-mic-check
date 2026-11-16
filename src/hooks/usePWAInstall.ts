@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2026 八百茄子 (yaonasu)
+ * SPDX-License-Identifier: MIT
+ */
+
 import { useEffect, useState } from 'react';
 
 interface BeforeInstallPromptEvent extends Event {

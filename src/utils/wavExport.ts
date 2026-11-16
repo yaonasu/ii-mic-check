@@ -2,6 +2,9 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
+/*
+ * Existing Apache-2.0 header is retained to preserve provenance/scope (see LICENSE.md and THIRD-PARTY-LICENSES.md).
+ */
 
 /**
  * ii-mic-check - WAV Audio Export Utilities

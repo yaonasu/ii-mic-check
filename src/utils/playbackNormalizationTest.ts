@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) 2026 八百茄子 (yaonasu)
+ * SPDX-License-Identifier: MIT
+ */
+
+/**
  * Unit tests for Phase 2A Playback Volume Normalization (-23 dBFS target,
  * +18 dB max boost, -1 dBFS peak protection, linear speech RMS aggregation,
  * and filter-aware playback stepping).

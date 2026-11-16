@@ -164,4 +164,4 @@ SOFTWARE.
 
 ## 3. プロジェクト内 `Apache-2.0` 適用部分の注記
 
-`src/App.tsx` および `src/utils/wavExport.ts` に付与されている `SPDX-License-Identifier: Apache-2.0` 表示部分およびテンプレート由来コードについては、引き続き **Apache License, Version 2.0**（`https://www.apache.org/licenses/LICENSE-2.0`）が適用されます。
+本リポジトリの独自コードには **MIT License**（`LICENSE.md`）が適用されますが、`src/App.tsx` および `src/utils/wavExport.ts` に付与されている `SPDX-License-Identifier: Apache-2.0` 表示部分およびテンプレート由来コードについては適用範囲を切り分けられない箇所を含め維持し、引き続き **Apache License, Version 2.0**（`https://www.apache.org/licenses/LICENSE-2.0`）が適用されます。

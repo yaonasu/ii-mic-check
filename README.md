@@ -77,11 +77,10 @@ npm run build     # 本番ビルド (dist/ 出力, base=/ii-mic-check/)
 
 ## ライセンスと利用条件
 
-Copyright (c) 2026 八百茄子 (yaonasu). All rights reserved.
+Copyright (c) 2026 八百茄子 (yaonasu)
 
-- **アプリのご利用（個人利用・業務利用）**: 公開されている `ii-mic-check`（Web アプリ / PWA）の通常利用は、個人・法人・業務利用を問わず**無料**です。
-- **独自ソースコード等の取り扱い**: 権利を保有する独自ソースコード、UI デザイン、採点ロジック等の無断改変・複製・再配布・別サービスへの流用は原則として禁止します。
-- **適用除外**: 第三者オープンソースライブラリおよび `SPDX-License-Identifier: Apache-2.0` が適用されるテンプレート由来・既存表記部分の権利は制限しません。
+- **本アプリの独自コード（MIT License）**: 八百茄子 (yaonasu) が権利を保有する `ii-mic-check` の独自ソースコード・ドキュメント等は **MIT License** の下で公開されており、著作権表示および許諾表示を保持する条件のもとで**改変・再配布・商用利用（個人・業務利用を含む）が許可**されます。
+- **既存 `Apache-2.0` 適用部分および第三者 OSS**: `src/App.tsx` および `src/utils/wavExport.ts` の `SPDX-License-Identifier: Apache-2.0` 適用部分、ならびにサードパーティオープンソースライブラリについては、それぞれの原ライセンス（Apache License 2.0 / MIT / ISC 等）が維持されます。
 
 詳細は [LICENSE.md](./LICENSE.md)（公開版: `/ii-mic-check/LICENSE.md`）をご参照ください。
 

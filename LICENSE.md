@@ -1,26 +1,29 @@
-# License (`ii-mic-check` / マイク音質チェッカー)
+MIT License
 
-Copyright (c) 2026 八百茄子 (yaonasu). All rights reserved.
+Copyright (c) 2026 八百茄子 (yaonasu)
 
-## 1. アプリケーションの利用許諾（個人利用・業務利用）
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-公開されている Web アプリケーション「ii-mic-check（マイク音質チェッカー）」（GitHub Pages 上の公開版および PWA として端末にインストールされた状態を含みます）の**通常の利用**（マイクやヘッドセットの録音テスト、音質確認、比較、レポート出力等の実行）は、**個人利用・法人または業務利用を問わず無料**で許可されます。
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-## 2. 権利の留保および禁止事項（独自ソースコード等）
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-本リポジトリに含まれる著作権者（八百茄子 (yaonasu)）が権利を保有する独自のソースコード、UI デザイン、採点ロジック、ドキュメント、画像資産その他の著作物について、著作権者の事前の書面による明示的な許可なく以下の行為を行うことは原則として禁止します。
+---
 
-1. 独自ソースコードや成果物の全部または一部を無断で改変・翻案・二次的著作物を作成すること
-2. 独自ソースコードやビルド成果物の全部または一部を無断で複製、再配布、再公開、販売、貸与、または有償・無償を問わず第三者へ再頒布すること
-3. 独自ソースコード、UI 構成、採点仕様等を別のサービス、別のアプリケーション、商用・非商用プロダクトへ無断で流用・組み込み・転用すること
+## 補足（適用範囲および第三者 OSS / Apache-2.0 適用部分について）
 
-## 3. 適用除外（第三者ライブラリおよび Apache-2.0 適用部分）
-
-本ライセンス条項は、第三者が著作権を保有するオープンソースソフトウェア、およびプロジェクト内の `SPDX-License-Identifier: Apache-2.0` が適用されるテンプレート由来部分・既存表記部分の権利を制限するものではありません。
-
-- **サードパーティ製オープンソースライブラリ**: 各ライブラリの著作権表示および原ライセンス（MIT License、ISC License 等）に従います。詳細は [THIRD-PARTY-LICENSES.md](./THIRD-PARTY-LICENSES.md) をご参照ください。
-- **`Apache-2.0` 適用部分**: `src/App.tsx` および `src/utils/wavExport.ts` における `SPDX-License-Identifier: Apache-2.0` 表示部分およびテンプレート由来部分については、引き続き Apache License, Version 2.0（`https://www.apache.org/licenses/LICENSE-2.0`）が適用されます。
-
-## 4. 免責事項（無保証）
-
-本アプリケーションおよび表示される測定値・暫定スコアは現状のまま（AS IS）で提供されており、商品性、特定目的への適合性、測定結果の正確性、完全性、Web 会議ツール等での実際の通話品質についていかなる保証も行いません。本アプリケーションの利用または利用不能によって生じたいかなる損害についても、著作権者は一切の責任を負いません。
+- 八百茄子 (yaonasu) が権利を保有する `ii-mic-check`（マイク音質チェッカー）の独自ソースコード・ドキュメント等には、上記の **MIT License** が適用されます（著作権表示および許諾表示を保持する条件のもとで、改変・再配布・商用利用および個人・業務利用が許可されます）。
+- 第三者が権利を保有するオープンソースライブラリについては、各ライブラリの著作権表示およびライセンス条件（MIT / ISC 等）が維持されます。詳細は [THIRD-PARTY-LICENSES.md](./THIRD-PARTY-LICENSES.md) をご参照ください。
+- `src/App.tsx` および `src/utils/wavExport.ts` に付与されている `SPDX-License-Identifier: Apache-2.0` 表示部分およびテンプレート由来部分については、引き続き **Apache License, Version 2.0**（`https://www.apache.org/licenses/LICENSE-2.0`）が維持されます。

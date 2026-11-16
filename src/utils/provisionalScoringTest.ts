@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) 2026 八百茄子 (yaonasu)
+ * SPDX-License-Identifier: MIT
+ */
+
+/**
  * Unit & regression tests for Phase 2C provisional 100-point scoring.
  * Verifies all 10 required behavior cases, UI/export score parity,
  * strict independence from subjective ratings, and modeled hardware profiles.
