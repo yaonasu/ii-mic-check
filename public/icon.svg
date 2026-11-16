@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <linearGradient id="cup" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#06b6d4" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="112" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
+
+  <!-- Headset Arch -->
+  <path d="M 140 260 A 116 116 0 0 1 372 260" fill="none" stroke="url(#glow)" stroke-width="24" stroke-linecap="round" filter="url(#shadow)"/>
+
+  <!-- Ear Cups -->
+  <rect x="110" y="225" width="48" height="96" rx="20" fill="url(#cup)"/>
+  <rect x="354" y="225" width="48" height="96" rx="20" fill="url(#cup)"/>
+  <rect x="130" y="235" width="18" height="76" rx="9" fill="#0f172a"/>
+  <rect x="364" y="235" width="18" height="76" rx="9" fill="#0f172a"/>
+
+  <!-- Microphone Boom & Capsule -->
+  <path d="M 140 300 Q 155 385 240 385 L 260 385" fill="none" stroke="#94a3b8" stroke-width="14" stroke-linecap="round"/>
+  <rect x="252" y="372" width="38" height="26" rx="10" fill="#10b981" filter="url(#shadow)"/>
+  <circle cx="271" cy="385" r="4" fill="#ffffff"/>
+
+  <!-- Sound Waves (Voice Activity Indicator) -->
+  <rect x="306" y="373" width="6" height="24" rx="3" fill="#06b6d4"/>
+  <rect x="318" y="363" width="6" height="44" rx="3" fill="#38bdf8"/>
+  <rect x="330" y="377" width="6" height="16" rx="3" fill="#10b981"/>
+</svg>
